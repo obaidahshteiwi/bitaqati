@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#6b4eff">
+<title>بطاقتي | صمّم بطاقتك بنفسك</title>
+<meta name="description" content="صمّم بطاقة مناسبتك بالعربية، خصّص النص والألوان، ثم نزّلها صورة أو احفظها PDF مجانًا.">
+<style>
+:root{--ink:#26213b;--muted:#716b83;--brand:#6b4eff;--paper:#fff;--bg:#f7f5ff;--line:#e7e1f6}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,#f4f0ff,#fff 440px);line-height:1.65}
+header{padding:25px 18px 18px;text-align:center} .logo{display:inline-flex;align-items:center;gap:9px;font-weight:900;font-size:27px;color:var(--brand)}.logo span{display:grid;place-items:center;width:42px;height:42px;background:var(--brand);color:white;border-radius:14px}
+header p{margin:5px auto;color:var(--muted);max-width:560px}
+main{max-width:1100px;margin:auto;padding:10px 16px 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:20px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 10px 35px #39217a0a}.panel h2{font-size:19px;margin:0 0 14px}
+label{display:block;font-weight:700;font-size:14px;margin:12px 0 5px}input,select,textarea{width:100%;font:inherit;border:1px solid #dcd5ef;border-radius:12px;padding:11px 12px;background:#fff;color:var(--ink);outline-color:var(--brand)}textarea{resize:vertical;min-height:75px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.field.full{grid-column:1/-1}.swatches{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.swatch{width:34px;height:34px;border:3px solid #fff;outline:1px solid #ddd;border-radius:50%;cursor:pointer}.swatch[aria-pressed=true]{outline:3px solid var(--ink)}
+.preview-wrap{background:#f0ecfb;border-radius:17px;padding:15px;display:grid;place-items:center;min-height:390px}
+.card-art{--c:#6b4eff;--bgc:#fff9f0;width:min(100%,430px);aspect-ratio:4/5;background:var(--bgc);border:8px double var(--c);padding:12px;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;box-shadow:0 8px 25px #27155d16}
+.card-inner{width:100%;height:100%;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);padding:22px 15px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.ornament{font-size:27px;color:var(--c);letter-spacing:8px}.eyebrow{color:var(--c);font-size:13px;font-weight:bold;margin:8px 0}.headline{font-size:clamp(27px,4vw,40px);line-height:1.45;margin:3px 0 12px;color:var(--c);overflow-wrap:anywhere}.message{white-space:pre-wrap;font-size:16px;max-width:95%;margin:0 0 14px;overflow-wrap:anywhere}.details{font-size:13px;line-height:1.9;color:#575064;white-space:pre-wrap;overflow-wrap:anywhere}.bottom{margin-top:18px;font-size:13px;color:var(--c);font-weight:bold}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.btn{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:bold;cursor:pointer}.primary{background:var(--brand);color:white;flex:1}.secondary{background:#eee9ff;color:#4834a0;flex:1}.note{font-size:12px;color:var(--muted);margin-top:12px}
+footer{text-align:center;padding:0 15px 28px;color:var(--muted);font-size:12px}
+@media(max-width:760px){main{grid-template-columns:1fr;padding:8px 12px 28px}header{padding-top:18px}.panel{padding:16px}.preview-wrap{min-height:unset}.card-art{width:min(100%,360px)}}
+@media print{body{background:white}.no-print,header,footer,main>.panel:first-child,.preview-title{display:none!important}main{display:block;padding:0;margin:0}.panel{border:0;box-shadow:none;padding:0}.preview-wrap{padding:0;background:white}.card-art{width:100%;max-width:170mm;height:212mm;box-shadow:none;margin:auto;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<header><div class="logo"><span>✦</span> بطاقتي</div><p>بطاقتك لمناسبتك… من ذوقك وبكلماتك 💌 صمّمها مجانًا ونزّلها للطباعة أو المشاركة.</p></header>
+<main>
+<section class="panel no-print">
+<h2>🎨 خصّص بطاقتك</h2>
+<div class="fields">
+<div class="field full"><label for="kind">نوع المناسبة</label><select id="kind">
+<option value="wedding">زفاف</option><option value="engagement">خطوبة</option><option value="birthday">عيد ميلاد</option><option value="baby">مولود جديد</option><option value="graduation">تخرّج</option><option value="eid">عيد</option><option value="thanks">شكر ومحبة</option>
+</select></div>
+<div class="field full"><label for="headline">العنوان الرئيسي</label><input id="headline" value="ألف مبروك"></div>
+<div class="field full"><label for="message">نص البطاقة</label><textarea id="message">بكل الحب والفرح، نشارككم أجمل لحظاتنا ونتمنى لكم أيامًا مليئة بالسعادة.</textarea></div>
+<div class="field"><label for="names">الأسماء</label><input id="names" placeholder="مثال: أحمد وسارة"></div>
+<div class="field"><label for="date">التاريخ والوقت</label><input id="date" placeholder="السبت، الساعة ٧ مساءً"></div>
+<div class="field full"><label for="place">المكان أو عبارة إضافية</label><input id="place" placeholder="اسم المكان أو العنوان"></div>
+<div class="field"><label for="style">ستايل البطاقة</label><select id="style"><option value="classic">كلاسيكي أنيق</option><option value="modern">عصري بسيط</option><option value="floral">ورود ناعمة</option><option value="night">ليلي فاخر</option></select></div>
+<div class="field"><label>لون التصميم</label><div class="swatches"><button class="swatch" data-color="#6b4eff" style="background:#6b4eff" aria-label="بنفسجي" aria-pressed="true"></button><button class="swatch" data-color="#a33b55" style="background:#a33b55" aria-label="خمري" aria-pressed="false"></button><button class="swatch" data-color="#177c70" style="background:#177c70" aria-label="أخضر" aria-pressed="false"></button><button class="swatch" data-color="#b8862b" style="background:#b8862b" aria-label="ذهبي" aria-pressed="false"></button><button class="swatch" data-color="#315c9b" style="background:#315c9b" aria-label="أزرق" aria-pressed="false"></button></div></div>
+</div>
+<div class="actions"><button class="btn primary" id="png">⬇ تنزيل PNG</button><button class="btn secondary" id="pdf">🖨 طباعة / PDF</button></div>
+<p class="note">نصيحة: لحفظ PDF اختر «حفظ كملف PDF» من نافذة الطباعة. للنتيجة الأفضل استخدم ورقًا مناسبًا للطباعة.</p>
+</section>
+<section class="panel">
+<h2 class="preview-title">👀 معاينة مباشرة</h2>
+<div class="preview-wrap"><div class="card-art" id="card"><div class="card-inner" id="inner"><div class="ornament" id="ornament">✦ ❀ ✦</div><div class="eyebrow" id="eyebrow">دعوة من القلب</div><h1 class="headline" id="outHeadline">ألف مبروك</h1><p class="message" id="outMessage">بكل الحب والفرح، نشارككم أجمل لحظاتنا ونتمنى لكم أيامًا مليئة بالسعادة.</p><div class="details" id="details"></div><div class="bottom" id="outNames"></div></div></div></div>
+<p class="note">المعاينة تتغيّر مباشرة مع كل تعديل. لا تُرسل بياناتك إلى أي جهة.</p>
+</section>
+</main>
+<footer>بطاقتي © 2026 — صُمّمت لتكون بسيطة ومجانية على الهاتف والكمبيوتر.</footer>
+<script>
+const $=id=>document.getElementById(id);
+const presets={
+wedding:{h:'دعوة زفاف',m:'بكل الحب والفرح، يسعدنا أن تشاركونا أجمل أيام العمر.',e:'دعوة من القلب'},
+engagement:{h:'تمّت الفرحة',m:'فرحتنا بتكمل بوجودكم معنا، ناطرينكم تشاركونا هاللحظة الحلوة.',e:'دعوة خطوبة'},
+birthday:{h:'عيد ميلاد سعيد',m:'سنة جديدة من الفرح والضحكات والأمنيات الحلوة. وجودكم أحلى هدية!',e:'يوم مميّز'},
+baby:{h:'أهلًا بالنور الجديد',m:'الحمد لله على تمام النعمة، نوّر حياتنا ضيف صغير نحب أن نشارككم فرحتنا به.',e:'فرحة العمر'},
+graduation:{h:'مبارك التخرّج',m:'تعب السنين صار فرحة، وبداية الطريق أحلى بوجود الأحباب.',e:'خطوة نحو المستقبل'},
+eid:{h:'عيدكم مبارك',m:'كل عام وأنتم بخير، أعاده الله عليكم بالفرح وراحة البال ولمّة الأحباب.',e:'أجمل التهاني'},
+thanks:{h:'من القلب، شكرًا',m:'وجودكم بحياتنا نعمة، وكلمات الشكر ما بتوفيكم حقكم.',e:'امتنان ومحبة'}
+};
+let color='#6b4eff';
+function render(){
+const k=$('kind').value,p=presets[k];
+if(!$('headline').dataset.edited)$('headline').value=p.h;
+if(!$('message').dataset.edited)$('message').value=p.m;
+$('eyebrow').textContent=p.e;$('outHeadline').textContent=$('headline').value||p.h;$('outMessage').textContent=$('message').value;
+$('details').textContent=[$('date').value,$('place').value].filter(Boolean).join('\n');
+$('outNames').textContent=$('names').value;
+const card=$('card');card.style.setProperty('--c',color);
+const style=$('style').value;let bg='#fffaf2',orn='✦ ❀ ✦';
+if(style==='modern'){bg='#ffffff';orn='— ✦ —';$('inner').style.borderStyle='solid'}
+if(style==='floral'){bg='#fff6f8';orn='❀ ✿ ❀';$('inner').style.borderStyle='dotted'}
+if(style==='night'){bg='#211d35';orn='✧ ✦ ✧';$('inner').style.borderStyle='solid';$('outMessage').style.color='#f5eefc';$('details').style.color='#eee5ff'}
+else{$('outMessage').style.color='';$('details').style.color=''}
+if(style!=='night'){$('outMessage').style.color='#26213b';$('details').style.color='#575064'}
+card.style.setProperty('--bgc',bg);$('ornament').textContent=orn;
+}
+['kind','headline','message','names','date','place','style'].forEach(id=>$(id).addEventListener('input',e=>{if(id==='headline'||id==='message')e.target.dataset.edited='true';render()}));
+$('kind').addEventListener('change',()=>{$('headline').dataset.edited='';$('message').dataset.edited='';render()});
+document.querySelectorAll('.swatch').forEach(b=>b.addEventListener('click',()=>{color=b.dataset.color;document.querySelectorAll('.swatch').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()}));
+function makeSvg(){
+const card=$('card'),r=card.getBoundingClientRect(),w=800,h=1000;
+const cs=getComputedStyle(card),c=cs.getPropertyValue('--c').trim(),bg=cs.getPropertyValue('--bgc').trim();
+const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+const lines=(text,max)=>{let out=[];String(text).split('\n').forEach(line=>{let cur='';for(const word of line.split(' ')){if((cur+word).length>max&&cur){out.push(cur);cur=word+' '}else cur+=word+' '}if(cur.trim())out.push(cur.trim())});return out};
+let y=250,parts=[];
+parts.push('<text x="400" y="155" text-anchor="middle" font-size="54" fill="'+c+'">'+esc($('ornament').textContent)+'</text>');
+parts.push('<text x="400" y="215" text-anchor="middle" font-size="27" font-weight="bold" fill="'+c+'">'+esc($('eyebrow').textContent)+'</text>');
+lines($('outHeadline').textContent,19).forEach(t=>{parts.push('<text x="400" y="'+y+'" text-anchor="middle" font-size="58" font-weight="bold" fill="'+c+'">'+esc(t)+'</text>');y+=76});
+y+=25;lines($('outMessage').textContent,32).forEach(t=>{parts.push('<text x="400" y="'+y+'" text-anchor="middle" font-size="30" fill="#26213b">'+esc(t)+'</text>');y+=47});
+y+=28;lines($('details').textContent,35).forEach(t=>{parts.push('<text x="400" y="'+y+'" text-anchor="middle" font-size="24" fill="#575064">'+esc(t)+'</text>');y+=40});
+y+=30;lines($('outNames').textContent,25).forEach(t=>{parts.push('<text x="400" y="'+y+'" text-anchor="middle" font-size="30" font-weight="bold" fill="'+c+'">'+esc(t)+'</text>');y+=42});
+return '<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'"><rect width="800" height="1000" fill="'+bg+'"/><rect x="18" y="18" width="764" height="964" fill="none" stroke="'+c+'" stroke-width="9"/><rect x="35" y="35" width="730" height="930" fill="none" stroke="'+c+'" stroke-width="1"/>'+parts.join('')+'</svg>';
+}
+$('png').addEventListener('click',()=>{const blob=new Blob([makeSvg()],{type:'image/svg+xml;charset=utf-8'}),url=URL.createObjectURL(blob),img=new Image();img.onload=()=>{const canvas=document.createElement('canvas');canvas.width=1600;canvas.height=2000;const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,1600,2000);ctx.drawImage(img,0,0,1600,2000);URL.revokeObjectURL(url);canvas.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='bitaqati-card.png';a.click();URL.revokeObjectURL(a.href)},'image/png')};img.onerror=()=>{URL.revokeObjectURL(url);alert('تعذّر تجهيز الصورة. جرّب مرة أخرى.')};img.src=url});
+$('pdf').addEventListener('click',()=>window.print());
+render();
+</script>
+</body></html>
